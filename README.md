@@ -9,7 +9,7 @@ Verify video and subtitle files for compliance
 ## How to use:
 
 1. **Before running the check_format.py script**: Prepare a folder containing all video and subtitle files. Do not include any other files, or any sub-folders.
-2. **Run the script via terminal/command-line**:
+2. **Run the script**:
 To execute the checker, include the folder path (relative or absolute) as a command-line argument
 ```
 python3 check_format.py path/to/folder
