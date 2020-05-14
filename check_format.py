@@ -12,22 +12,26 @@ import sys
 import subprocess
 import argparse
 
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument('folder',  help='Path to folder with videos and subtitles')
+parser.add_argument("--timelimit", "-t", help="Max. duration of videos (in minutes)", type=float, default=15.0)
+parser.add_argument("--tolerance", "-d", help="Tolerance for exceeding max. duration (in seconds)", type=int, default=30)
+args = parser.parse_args()
+
 pwd = os.getcwd()
 if len(sys.argv) == 1:
     raise Exception("Missing 1 argument - path to folder containing videos and subtitles")
 
-if not os.path.isdir(sys.argv[1]):
+if not os.path.isdir(args.folder):
     raise Exception("Argument #1 should be path to a directory")
 
 # Change to videos directory
-os.chdir(sys.argv[1])
+os.chdir(args.folder)
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--timelimit", "-t", help="Max. duration of videos (in minutes)", default="15")
-parser.add_argument("--tolerance", "-d", help="Tolerance for exceeding max. duration (in seconds)", default="30")
-args = parser.parse_args()
 
-max_duration = args.timelimit
+max_duration = int(args.timelimit*60)
 duration_tolerance = args.tolerance
 
 # Return duration (in seconds)
@@ -109,4 +113,4 @@ for file in video_files:
 with open('per-submission-report.json', 'w') as fp:
     json.dump(reports, fp, indent = 2)
 
-print("Reports available at " + pwd)
+print("Done! Reports available at: " + pwd)
