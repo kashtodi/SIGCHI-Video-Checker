@@ -8,7 +8,7 @@ Verify video and subtitle files for compliance
 
 ## How to use:
 
-1. **Before running the check_format.py script**: Prepare a folder containing all video and subtitle files. Do not include any other files, or any sub-folders.
+1. **Before running the check_format.py script**: Prepare a folder containing all video and subtitle files. Do not include any other files, or any sub-folders. The checker assumes that files are named such that each submission uses the same name for the video and the subtitle file (e.g. `1034.mp4` and `1034.srt`).
 2. **Run the script**:
 To execute the checker, include the folder path (relative or absolute) as a command-line argument
 ```
